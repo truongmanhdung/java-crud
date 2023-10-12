@@ -74,4 +74,14 @@ public class ProductService {
         }
         return result;
     }
+
+    @Transactional(readOnly = true)
+    public List<Product> getProductByNameAndPrice(String name, int price) throws Exception {
+        try {
+            return productRepository.findByNameAndPrice(name, price);
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
 }

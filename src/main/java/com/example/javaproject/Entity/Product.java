@@ -41,7 +41,7 @@ public class Product {
     }
     @PreUpdate
     private void update(){
-        createdBy = "dungtm";
+        createdBy = "dungtm123";
     }
 
     @Override

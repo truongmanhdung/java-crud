@@ -4,6 +4,7 @@ import com.example.javaproject.Entity.Product;
 import com.example.javaproject.service.ProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,6 +24,7 @@ public class ProductController {
      *
      * @return the ResponseEntity with status 200 (OK) and with body all products
      */
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/products")
     public  List<Product> getAllProduct() throws Exception {
         List products = productService.getAllProduct();
@@ -64,5 +66,11 @@ public class ProductController {
         return productService.deleteProductById(Long.valueOf(id));
     }
 
+
+    @GetMapping("/product-by-name-price")
+    public  List<Product> getProductByNameAndPrice(@RequestParam String name, @RequestParam int price) throws Exception {
+        List products = productService.getProductByNameAndPrice(name, price);
+        return products;
+    }
 
 }
